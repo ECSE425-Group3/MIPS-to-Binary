@@ -45,8 +45,8 @@ i_inst_unsigned = { #inst $t,$s,C
 i_inst_mem = { #inst $t,C($s)
     "lw" : "010100",
     "lb" : "010101",
-    "sw" : "010111",
-    "sb" : "011000"
+    "sw" : "010110",
+    "sb" : "010111"
 }
 
 i_inst_branch = { #inst $s,$t,C
@@ -105,8 +105,8 @@ if len(sys.argv) == 3:
     f = open(sys.argv[1], 'r')
     w = open(sys.argv[2], 'w')
 else:
-    f = open("fib.asm", 'r')
-    w = open("fib.dat", 'w')
+    f = open("bitwise.asm", 'r')
+    w = open("bitwise.dat", 'w')
 
 labels = {}
 count = 0
