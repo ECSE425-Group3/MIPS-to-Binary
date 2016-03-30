@@ -98,9 +98,15 @@ reg = {
     "$31" : "11111",
 }
 
+f = 0
+w = 0
 
-f = open(sys.argv[1], 'r')
-w = open(sys.argv[2], 'w')
+if len(sys.argv) == 3:
+    f = open(sys.argv[1], 'r')
+    w = open(sys.argv[2], 'w')
+else:
+    f = open("fib.asm", 'r')
+    w = open("fib.dat", 'w')
 
 labels = {}
 count = 0
@@ -153,6 +159,9 @@ for line in f:
         machine_line += r_inst_jr[line[0]]
         machine_line += reg[line[1]]
         machine_line += format(0, "021")
+        machine_line += '\n'
+        machine_line += format(0, "032")
+        count += 4
     elif line[0] in i_inst_signed.keys():
         machine_line += i_inst_signed[line[0]]
         machine_line += reg[line[2]]
@@ -175,6 +184,9 @@ for line in f:
         machine_line += reg[line[1]]
         machine_line += reg[line[2]]
         machine_line += line[3]
+        machine_line += '\n'
+        machine_line += format(0, "032")
+        count += 4
     elif line[0] in i_inst_lui.keys():
         machine_line += i_inst_lui[line[0]]
         machine_line += format(0, "05")
@@ -184,6 +196,9 @@ for line in f:
         machine_line += "jump"
         machine_line += j_inst[line[0]]
         machine_line += line[1]
+        machine_line += '\n'
+        machine_line += format(0, "032")
+        count += 4
     else:
         raise Exception("Instruction {} did not match any instruction in core set".format(count))
 
