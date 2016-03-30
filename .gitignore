@@ -1,0 +1,3 @@
+# ignore assmbler output
+*.txt
+*.dat
