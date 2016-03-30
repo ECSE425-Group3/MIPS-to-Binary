@@ -192,7 +192,8 @@ for i, line in enumerate(machines_lines):
     for label in labels.keys():
         if label in line:
             if line[:4] == "bran":
-                address = format(labels[label], "016b")
+	    	PC = i * 4 + 4
+                address = format(labels[label] - PC, "016b")
                 machines_lines[i] = line.replace(label, address)[4:]
             else:
                 address = format(labels[label], "026b")
