@@ -1,3 +1,5 @@
+import sys
+
 r_inst = { #inst $d,$s,$t
     "add" : "000000",
     "sub" : "000001",
@@ -96,8 +98,9 @@ reg = {
     "$31" : "11111",
 }
 
-f = open("fib.asm", 'r')
-w = open("bytecode.txt", 'w')
+
+f = open(sys.argv[1], 'r')
+w = open(sys.argv[2], 'w')
 
 labels = {}
 count = 0
@@ -192,8 +195,7 @@ for i, line in enumerate(machines_lines):
     for label in labels.keys():
         if label in line:
             if line[:4] == "bran":
-	    	PC = i * 4 + 4
-                address = format(labels[label] - PC, "016b")
+                address = format(labels[label], "016b")
                 machines_lines[i] = line.replace(label, address)[4:]
             else:
                 address = format(labels[label], "026b")
