@@ -18,7 +18,7 @@ Bitwise:        addi $1, $0, 3
 				mult $10, $15			# $lo=4*$10, for word alignment 
 				mflo $12				# assume small numbers
 				add  $13, $11, $12 		# Make data pointer [2000+($10)*4]
-				add $2,$0,$3 
+				add $2,$0,$2 
 				sw	 $2, 0($13)
 
                 # w = x && y
@@ -41,6 +41,7 @@ Continue:       or   $5, $1, $2         # a = x | y
 				addi $10, $0, 3
 				mult $10, $15			# $lo=4*$10, for word alignment 
 				mflo $12				# assume small numbers
+				lw $7, -4($13)
 				add  $13, $11, $12 		# Make data pointer [2000+($10)*4]
 				add $2,$0,$5 
 				sw	 $2, 0($13)
