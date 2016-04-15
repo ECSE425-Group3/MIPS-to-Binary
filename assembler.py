@@ -105,8 +105,8 @@ if len(sys.argv) == 3:
     f = open(sys.argv[1], 'r')
     w = open(sys.argv[2], 'w')
 else:
-    f = open("bitwise.asm", 'r')
-    w = open("bitwise.dat", 'w')
+    f = open("fib.asm", 'r')
+    w = open("fib.dat", 'w')
 
 labels = {}
 count = 0

@@ -3,7 +3,7 @@
 # It stores the generated Fibonacci numbers fisrt into, Reg[2] ($2), and then into memory
 # Assume that your data section in memory starts from address 2000
 
-	addi $10,  $0, 5	# number of generating Fibonacci-numbers
+	addi $10,  $0, 10	# number of generating Fibonacci-numbers
 	addi $1,   $0, 1	# initializing Fib(-1) = 0
 	addi $2,   $0, 1	# initializing Fib(0) = 1
 	addi $11,  $0, 2000  	# initializing the beginning of Data Section address in memory
